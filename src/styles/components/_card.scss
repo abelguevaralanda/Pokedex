@@ -1,0 +1,24 @@
+.card_container {
+  @include flex(flex, column, nowrap, space-around, center);
+  background: rgb(255 255 255 / 13%);
+  border-radius: 10px;
+  max-height: 175px;
+  min-height: 175px;
+  min-width: 230px;
+  box-shadow: 10px 10px 25px 0px rgb(101 100 100 / 24%);
+
+  div {
+    @include flex(flex, row, nowrap, center, center);
+    position: relative;
+    width: $full-width;
+  }
+  img {
+    position: absolute;
+    min-width: 45%;
+    max-width: 45%;
+  }
+  strong {
+    margin-top: 30%;
+    font-size: $font-size-l;
+  }
+}

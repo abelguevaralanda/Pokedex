@@ -1,0 +1,17 @@
+//Variables.
+$full-width: 100%;
+$font-size-l: 1.5rem;
+
+//Mixings.
+@mixin flex($dis, $direction, $cut, $just, $align) {
+  display: $dis;
+  flex-flow: $direction $cut;
+  justify-content: $just;
+  align-items: $align;
+}
+
+@mixin grid($columns, $space) {
+  display: grid;
+  grid-template-columns: repeat($columns, minmax(300px, 1fr));
+  gap: $space;
+}
