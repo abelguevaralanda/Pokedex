@@ -1,0 +1,5 @@
+.card_list_container {
+  padding: 0;
+  @include grid(auto-fit, 75px);
+  justify-items: center;
+}
