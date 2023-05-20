@@ -3,8 +3,11 @@
 //UI Settings.
 @import './base/setting';
 
-//components.
+//Components.
 @import './components/header';
 @import './components/card_list';
 @import './main';
 @import './components/card';
+
+//Pages.
+@import './pages/home';
