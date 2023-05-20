@@ -6,12 +6,12 @@ interface CardListProps {
   pokemonList?: Pokemon[];
   index: number;
 }
-const CardList: FC<CardListProps> = ({ pokemonList }) => {
+const CardList: FC<CardListProps> = ({ pokemonList, index }) => {
   return (
     <ul data-testid="pokemon-list" className="card_list_container">
-      {pokemonList?.map((pokemon, index) => (
+      {pokemonList?.map((pokemon, i) => (
         <li key={pokemon.name}>
-          <Card pokemon={pokemon} index={index + 1} />
+          <Card pokemon={pokemon} index={i + 1 + index} />
         </li>
       ))}
     </ul>
