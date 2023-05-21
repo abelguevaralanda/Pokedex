@@ -35,7 +35,7 @@ const CardDetail: FC<CardDetailProps> = ({ pokemonId }) => {
           alt={data?.name}
         />
         <article>
-          <strong>{data?.name.toUpperCase()}</strong>
+          <strong data-testid="pokemon-name">{data?.name.toUpperCase()}</strong>
           <div>
             <span>Weight: {data?.weight}</span>
             <span>Heigth: {data?.height}</span>
