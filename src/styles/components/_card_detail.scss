@@ -1,0 +1,44 @@
+.card_detail_container {
+  @include flex(flex, column, nowrap, center, center);
+  .detail__container {
+    @include flex(flex, row, wrap, center, center);
+    gap: 5%;
+    padding: 2%;
+    width: 50%;
+    background: rgba(255, 255, 255, 0.13);
+    box-shadow: 10px 10px 25px 0px rgb(101 100 100 / 24%);
+    border-radius: 10px;
+    height: 270px;
+    max-height: 300px;
+  }
+  .detail__home {
+    width: 20%;
+    align-self: flex-start;
+    margin-left: -16%;
+  }
+  div {
+    width: 115%;
+  }
+  img {
+    width: 30%;
+  }
+  article {
+    @include flex(flex, column, nowrap, normal, flex-start);
+    height: 245px;
+    gap: 10%;
+  }
+  strong {
+    font-size: $font-size-xl;
+    -webkit-text-stroke: 2px rgb(49, 109, 181);
+  }
+
+  span,
+  p {
+    font-size: $font-size-l;
+    margin: 0;
+    -webkit-text-stroke: 2px rgb(49, 109, 181);
+  }
+  span {
+    margin-right: 5%;
+  }
+}
