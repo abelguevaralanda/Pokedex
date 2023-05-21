@@ -33,4 +33,50 @@ export const handlers = [
       }),
     );
   }),
+  rest.get('https://pokeapi.co/api/v2/pokemon/1', (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        abilities: [
+          {
+            ability: {
+              name: 'overgrow',
+              url: 'https://pokeapi.co/api/v2/ability/65/',
+            },
+            is_hidden: false,
+            slot: 1,
+          },
+        ],
+        height: 7,
+
+        id: 1,
+
+        name: 'bulbasaur',
+
+        sprites: {
+          versions: {
+            'generation-v': {
+              'black-white': {
+                animated: {
+                  front_default:
+                    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif',
+                },
+              },
+            },
+          },
+        },
+
+        types: [
+          {
+            slot: 1,
+            type: {
+              name: 'grass',
+              url: 'https://pokeapi.co/api/v2/type/12/',
+            },
+          },
+        ],
+        weight: 69,
+      }),
+    );
+  }),
 ];

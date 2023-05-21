@@ -1,4 +1,4 @@
-import { useGetPokemons } from '../../features/pokemon-api';
+import { useGetPokemons } from '../../services/pokemon-api';
 import CardList from '../../features/components/CardList/CardList';
 import { useState } from 'react';
 
@@ -10,7 +10,7 @@ const Home = () => {
   if (!data)
     return (
       <>
-        <img src="../../../asset/loading-mew.gif" alt="loading" />
+        <img src="../../../asset/images/loading-mew.gif" alt="loading" />
         <p>Cargando...</p>
       </>
     );
@@ -26,7 +26,7 @@ const Home = () => {
           }}
           disabled={data.previous === null}
         >
-          <img src="../../../asset/previows.png" alt="previous-page" />
+          <img src="../../../asset/images/previows.png" alt="previous-page" />
         </button>
         <strong>
           {`${Math.ceil((page + 1) / POKEMONS_PER_PAGE)} /
@@ -38,7 +38,7 @@ const Home = () => {
           }}
           disabled={data.next === null}
         >
-          <img src="../../../asset/next.png" alt="next-page" />
+          <img src="../../../asset/images/next.png" alt="next-page" />
         </button>
       </section>
     </>

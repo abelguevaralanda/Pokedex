@@ -4,6 +4,7 @@ import { act, render, screen } from '@testing-library/react';
 import { handlers } from 'src/mocks/handlers';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
+import { MemoryRouter } from 'react-router-dom';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -12,7 +13,11 @@ afterAll(() => server.close());
 describe('Given a Pokemon CardList component', () => {
   describe('When data is null', () => {
     test('Then it should render a message and image', () => {
-      render(<Home />);
+      render(
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>,
+      );
 
       expect(screen.getByAltText('loading')).toBeInTheDocument();
     });
@@ -21,7 +26,11 @@ describe('Given a Pokemon CardList component', () => {
   describe('When component loads and API responds whit pokemons', () => {
     test('Then it should render the list of pokemon', async () => {
       server.use(...handlers);
-      render(<Home />);
+      render(
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>,
+      );
 
       expect(await screen.findByText('BULBASAUR')).toBeInTheDocument();
       expect(await screen.findByText('IVYSAUR')).toBeInTheDocument();
@@ -33,7 +42,11 @@ describe('Given a Pokemon CardList component', () => {
 
   describe('When the clics the previous button', () => {
     test('Then it should see the previous pokemon', async () => {
-      render(<Home />);
+      render(
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>,
+      );
 
       userEvent.click(screen.getByAltText('previous-page'));
 
@@ -78,7 +91,11 @@ describe('Given a Pokemon CardList component', () => {
           );
         }),
       );
-      render(<Home />);
+      render(
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>,
+      );
 
       await act(
         async () => await userEvent.click(screen.getByAltText('next-page')),
