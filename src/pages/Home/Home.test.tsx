@@ -10,7 +10,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-describe('Given a Pokemon CardList component', () => {
+describe('Given a Home page', () => {
   describe('When data is null', () => {
     test('Then it should render a message and image', () => {
       render(
@@ -18,12 +18,12 @@ describe('Given a Pokemon CardList component', () => {
           <Home />
         </MemoryRouter>,
       );
-
+      expect(screen.getByRole('img')).toBeInTheDocument();
       expect(screen.getByAltText('loading')).toBeInTheDocument();
     });
   });
 
-  describe('When component loads and API responds whit pokemons', () => {
+  describe('When page loads and API responds whit pokemons', () => {
     test('Then it should render the list of pokemon', async () => {
       server.use(...handlers);
       render(
@@ -55,7 +55,7 @@ describe('Given a Pokemon CardList component', () => {
     });
   });
 
-  describe('When the user clicks the pagination button', () => {
+  describe('When the user clicks the next button', () => {
     test('Then it should see others pokemons', async () => {
       server.use(
         rest.get('https://pokeapi.co/api/v2/pokemon', (_req, res, ctx) => {
