@@ -21,6 +21,7 @@ const Home = () => {
       </section>
       <section className="home_container">
         <button
+          name="previous"
           onClick={() => {
             setpage(page - POKEMONS_PER_PAGE);
           }}
@@ -33,6 +34,7 @@ const Home = () => {
           ${Math.round(data.count / POKEMONS_PER_PAGE)}`}
         </strong>
         <button
+          name="next"
           onClick={() => {
             setpage(page + POKEMONS_PER_PAGE);
           }}
