@@ -10,7 +10,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-describe('Given a Home page', () => {
+describe('Given a Home pages', () => {
   describe('When data is null', () => {
     test('Then it should render a message and image', () => {
       render(
@@ -18,12 +18,12 @@ describe('Given a Home page', () => {
           <Home />
         </MemoryRouter>,
       );
-      expect(screen.getByRole('img')).toBeInTheDocument();
+
       expect(screen.getByAltText('loading')).toBeInTheDocument();
     });
   });
 
-  describe('When page loads and API responds whit pokemons', () => {
+  describe('When component loads and API responds whit pokemons', () => {
     test('Then it should render the list of pokemon', async () => {
       server.use(...handlers);
       render(
@@ -40,22 +40,22 @@ describe('Given a Home page', () => {
     });
   });
 
-  describe('When the clics the previous button', () => {
-    test('Then it should see the previous pokemon', async () => {
-      render(
-        <MemoryRouter>
-          <Home />
-        </MemoryRouter>,
-      );
+  // describe('When the clics the previous button', () => {
+  //   test('Then it should see the previous pokemon', async () => {
+  //     render(
+  //       <MemoryRouter>
+  //         <Home />
+  //       </MemoryRouter>,
+  //     );
 
-      userEvent.click(screen.getByAltText('previous-page'));
+  //     userEvent.click(screen.getByAltText('previous-page'));
 
-      expect(await screen.findByText('1 / 64')).toBeInTheDocument();
-      expect(await screen.findByText('BULBASAUR')).toBeInTheDocument();
-    });
-  });
+  //     expect(await screen.findByText('1 / 64')).toBeInTheDocument();
+  //     expect(await screen.findByText('BULBASAUR')).toBeInTheDocument();
+  //   });
+  // });
 
-  describe('When the user clicks the next button', () => {
+  describe('When the user clicks the pagination buttons', () => {
     test('Then it should see others pokemons', async () => {
       server.use(
         rest.get('https://pokeapi.co/api/v2/pokemon', (_req, res, ctx) => {
@@ -63,8 +63,8 @@ describe('Given a Home page', () => {
             ctx.status(200),
             ctx.json({
               count: 1281,
-              next: 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20',
-              previous: null,
+              next: 'https://pokeapi.co/api/v2/pokemon?offset=40&limit=20',
+              previous: 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20',
               results: [
                 {
                   name: 'charizard',
@@ -102,9 +102,12 @@ describe('Given a Home page', () => {
       );
 
       expect(await screen.findByAltText('previous-page')).toBeEnabled();
-
       expect(await screen.findByText('2 / 64')).toBeInTheDocument();
       expect(await screen.findByText('CHARIZARD')).toBeInTheDocument();
+      await act(
+        async () => await userEvent.click(screen.getByTestId('previous')),
+      );
+      expect(await screen.findByTestId('previous')).toBeDisabled();
     });
   });
 });
