@@ -4,8 +4,7 @@
 <br/><br/>
   
 ## :speech_balloon: About
-<h3>This is an App, which displays a responsive and paginated list of pokémons. When you click on a pokémon it shows its details. 
-I used for the first time libraries like Cypress for E2E testing, SWR for fetching and asynchronous data handling and Sass for layout and styling.</h3>
+<h3>This is an App, which displays a responsive and paginated list of pokémon. When you click on a pokémon its details are displayed. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Typescript. I used for the first time libraries like Cypress for E2E testing, SWR for fetching and asynchronous data handling and Sass for layout and styling.</h3>
 
 <br/><br/>
 
